@@ -4,6 +4,8 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 
 NAME_IMAGE='jetson_docker_ws'
 
+docker run --rm --privileged multiarch/qemu-user-static --reset -p yes --credential yes
+
 if [ ! $# -ne 1 ]; then
 	if [ "setup" = $1 ]; then
 		echo "Image ${NAME_IMAGE} does not exist."

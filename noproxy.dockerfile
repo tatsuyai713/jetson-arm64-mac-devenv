@@ -21,8 +21,7 @@ RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin prohibit-passwo
 RUN sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#Port 22/Port 20022/' /etc/ssh/sshd_config
-RUN ssh-keygen -A
 
 EXPOSE 20022
 USER nvidia
-CMD sudo bash -c '/usr/sbin/sshd -D &' && /bin/bash
+CMD sudo bash -c 'ssh-keygen -A' && sudo bash -c '/usr/sbin/sshd -D &' && /bin/bash
